@@ -28,6 +28,7 @@ class Candidate(debate_pb2.BetaCandidateServicer):
                                 #AnswerReply.answer
                         return debate_pb2.AnswerReply(answer=ran_answer)
                 if match:
+                        # if question is "what is your opinion on China", I change it to "what is my opinion on China"
                         answer_sub = []
                         for word in sentence:
                                 word = word.lower()
@@ -38,17 +39,16 @@ class Candidate(debate_pb2.BetaCandidateServicer):
         
                                 answer_sub.append(word + " ")
                         answer_string = ''.join(answer_sub)
+                        
                         #makes an RPC call to external server CampainManager.Retort with request = "answer_sub "
                         channel = implementations.insecure_channel('54.88.18.92', 50051)
                         stub = consultation_pb2.beta_create_CampaignManager_stub(channel)
                         t1 = time.clock()
-                        time_lapsed = t1 - t0
-
-                        t1 = time.clock()
-                        time_lapsed = t1 - t0
+                        time_lapsed = t1 -t0
                         time_remain = 10 + request.timeout - time_lapsed
                         _TIMEOUT_SECONDS = time_remain
                         RetortReply = stub.Retort(consultation_pb2.RetortRequest(original_question=answer_string), _TIMEOUT_SECONDS)
+                        #this service will reply something ridiculous, like "I am going to disprove CAP thoerem"
                         print ("CampaignManager service replied: " + RetortReply.retort)
                         t2 = time.clock()
                         if t2-t0 > 10 + request.timeout:
@@ -58,7 +58,10 @@ class Candidate(debate_pb2.BetaCandidateServicer):
                                 answer = 'You asked me ' + answer_string + 'but I want to say that ' + RetortReply.retort
 
                                 return debate_pb2.AnswerReply(answer=answer)
+                        
         def Elaborate(self, request, context):
+                #if topic = finance, blah_run = 3 2, method Elaborate will return
+                # "blah_run blah_rub blah_run finance blah_run blah_run
                 answer = []
                 topic = request.topic
                 num_blah = request.blah_run
