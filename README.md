@@ -1,5 +1,5 @@
 # author: Emily Hua
-# gRPC
+# gRPC exercise that makes fun of politicians
 # demonstrates how to use grpc to write a server that talks to an external server that can be written in another language
 # implements prof.Yair Sovran's design idea to create a candidate_server, which takes client request and answers in an evasive way.
 # (*candidate server talks to an external campaign_manager server to get retorted answer, incorporates it to form the final answer) 
