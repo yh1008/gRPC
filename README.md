@@ -8,7 +8,6 @@
 # this file contains instructions how to build and run gRPC.
 
 # TODO: document how to invoke protoc in order to generate the stubs 
-# language of choice: Python
 ---------------------------------------------------------------
 $ protoc -I . --python_out=. --grpc_out=. --plugin=protoc-gen-grpc=`which grpc_python_plugin` debate.proto
 ------------------------------------------------------------------
