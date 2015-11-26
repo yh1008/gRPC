@@ -7,18 +7,18 @@
 
 
 
-### TODO: document how to invoke protoc in order to generate the stubs 
+#### how to invoke protoc in order to generate the stubs 
  $ protoc -I . --python_out=. --grpc_out=. --plugin=protoc-gen-grpc=`which grpc_python_plugin` debate.proto
 
 
-### TODO: document how run your server (on localhost)
-### this is running on local host port 80000
-------------------------------------------------------------------
-$ python candidate_server.py
-------------------------------------------------------------------
+####how run your server (on localhost)
+####this is running on local host port 80000
 
-#TODO: document how to run command lint tool
-------------------------------------------------------------------
+$ python candidate_server.py
+
+
+####how to run command lint tool
+
 $ chmod +x moderator.py
 $ ./moderator.py elaborate finance 2 3 1
 
