@@ -1,5 +1,6 @@
 
 #implement the method of Answer && Elaborate`
+#make fun of politicians, lol
 
 from random import randint
 from grpc.beta import implementations
@@ -40,7 +41,7 @@ class Candidate(debate_pb2.BetaCandidateServicer):
                                 answer_sub.append(word + " ")
                         answer_string = ''.join(answer_sub)
                         
-                        #makes an RPC call to external server CampainManager.Retort with request = "answer_sub "
+                        #makes an RPC call to external server CampainManager.Retort with request = "answer_string "
                         channel = implementations.insecure_channel('54.88.18.92', 50051)
                         stub = consultation_pb2.beta_create_CampaignManager_stub(channel)
                         t1 = time.clock()
