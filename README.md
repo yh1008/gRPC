@@ -9,14 +9,11 @@
 # TODO: document how to invoke protoc in order to generate the stubs 
 # language of choice: Python
 ---------------------------------------------------------------
-$ protoc -I . --python_out=. --grpc_out=. --plugin=protoc-gen-grpc=/usr/local/bin/grpc_python_plugin debate.pr$
-or
+
 $ protoc -I . --python_out=. --grpc_out=. --plugin=protoc-gen-grpc=`which grpc_python_plugin` debate.proto
 ------------------------------------------------------------------
 
-# TODO: document how to build your server and client code (if applicable)
-# YOUR INSTRUCTIONS GO HERE: NA
-------------------------------------------------------------------
+
 
 # TODO: document how run your server (on localhost)
 # this is running on local host port 80000
