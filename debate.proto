@@ -1,0 +1,23 @@
+syntax = 'proto2';
+
+package debate;
+
+service Candidate {
+	rpc Answer(AnswerRequest) returns (AnswerReply) {}
+	rpc Elaborate(ElaborateRequest) returns (ElaborateReply) {}
+}
+message AnswerRequest{
+	optional string question = 1;
+	optional int32 timeout = 2; //nonnegative integer field
+}
+message AnswerReply{
+	optional string answer = 1;
+}
+
+message ElaborateRequest{
+	optional string topic = 1;
+	repeated int32 blah_run =2; //repeated integer field
+}
+message ElaborateReply{
+	optional string answer = 1;
+}
