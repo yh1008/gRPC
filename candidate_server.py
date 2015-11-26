@@ -7,14 +7,14 @@ import re
 import debate_pb2
 import consultation_pb2
 import time
-#from time import time
+
 _TIMEOUT_SECONDS = 10
 _ONE_DAY_IN_SECONDS = 60 * 60 * 24
 
-#start_word_list = ['why', 'what', 'how', 'who', 'when']
+
 class Candidate(debate_pb2.BetaCandidateServicer):
 
-        def Answer(self, request, context): #? is it the right argument to take in?
+        def Answer(self, request, context): 
                 t0 = time.clock()
                 sentence = request.question.split()
                 start_word = sentence[0].lower()
@@ -35,10 +35,10 @@ class Candidate(debate_pb2.BetaCandidateServicer):
                                         word = "I"
                                 elif word == "your":
                                         word = "my"
-                                #re.sub('\.', '', word)
+        
                                 answer_sub.append(word + " ")
                         answer_string = ''.join(answer_sub)
-                #makes an RPC call to external server CampainManager.Retort with request = "answer_sub "
+                        #makes an RPC call to external server CampainManager.Retort with request = "answer_sub "
                         channel = implementations.insecure_channel('54.88.18.92', 50051)
                         stub = consultation_pb2.beta_create_CampaignManager_stub(channel)
                         t1 = time.clock()
