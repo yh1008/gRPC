@@ -18,8 +18,10 @@ $ python candidate_server.py
 
 
 ####how to run command lint tool:
-$ chmod +x moderator.py \n
-$ ./moderator.py elaborate finance 2 3 1\n
+$ chmod +x moderator.py 
+#
+$ ./moderator.py elaborate finance 2 3 1
+#
 $ ./moderator.py answer "what is your campaign budget" 5
 
 
