@@ -1,4 +1,4 @@
-# author: Ye Hua yh1008
+# author: Emily Hua
 # gRPC
 # demonstrates how to use grpc to write a server that talks to an external server that can be written in another language
 # implements prof.Yair Sovran's design idea to create a candidate_server, which takes client request and answers in an evasive way.
