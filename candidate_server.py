@@ -72,9 +72,9 @@ class Candidate(debate_pb2.BetaCandidateServicer):
 
                 if num_blah:
                         for i in num_blah:
+                                string = 'blah '*i + topic
                                 for j in range(i):
-                                        answer.append('blah_run ')
-
+                                        answer.append('blah ')
                                 answer.append(topic)
                                 answer.append(" ")
                         length = len(topic)
