@@ -7,16 +7,13 @@ from grpc.beta import implementations
 import re
 import debate_pb2
 import consultation_pb2
-import time
 
-_TIMEOUT_SECONDS = 10
 _ONE_DAY_IN_SECONDS = 60 * 60 * 24
 
 
 class Candidate(debate_pb2.BetaCandidateServicer):
 
         def Answer(self, request, context): 
-                t0 = time.clock()
                 sentence = request.question.split()
                 start_word = sentence[0].lower()
                 match = re.search(r'what|why|how|who|when',start_word)
@@ -44,21 +41,17 @@ class Candidate(debate_pb2.BetaCandidateServicer):
                         #makes an RPC call to external server CampainManager.Retort with request = "answer_string "
                         channel = implementations.insecure_channel('54.88.18.92', 50051)
                         stub = consultation_pb2.beta_create_CampaignManager_stub(channel)
-                        t1 = time.clock()
-                        time_lapsed = t1 -t0
-                        time_remain = 10 + request.timeout - time_lapsed
-                        _TIMEOUT_SECONDS = time_remain
-                        RetortReply = stub.Retort(consultation_pb2.RetortRequest(original_question=answer_string), _TIMEOUT_SECONDS)
+                        try:
+                                RetortReply = stub.Retort(consultation_pb2.RetortRequest(original_question=answer_string), request.timeout+10)
+                                answer = 'You asked me ' + answer_string + 'but I want to say that ' + RetortReply.retort
                         #this service will reply something ridiculous, like "I am going to disprove CAP thoerem"
-                        print ("CampaignManager service replied: " + RetortReply.retort)
-                        t2 = time.clock()
-                        if t2-t0 > 10 + request.timeout:
+                        except grpc.framework.interfaces.face.face.ExpirationError:
 
-                                return debate_pb2.AnswerReply(answer='No comment.')
+                                answer = 'No comment.'
                         else:
                                 answer = 'You asked me ' + answer_string + 'but I want to say that ' + RetortReply.retort
 
-                                return debate_pb2.AnswerReply(answer=answer)
+                        return debate_pb2.AnswerReply(answer=answer)
                         
         def Elaborate(self, request, context):
                 #if topic = finance, blah_run = 3 2, method Elaborate will return
