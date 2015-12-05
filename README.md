@@ -23,7 +23,7 @@ implements Prof.Yair Sovran's design idea to create a candidate_server, which ta
 	$ python candidate_server.py
 
 
-####how to run command lint tool:
+#####how to run command lint tool:
 	$ chmod +x moderator.py 
 #
 	$ ./moderator.py elaborate finance 2 3 1
