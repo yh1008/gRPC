@@ -18,7 +18,7 @@ implements Prof.Yair Sovran's design idea to create a candidate_server, which ta
 
 #####how run the server (on localhost):
 
-//this is running on local host port 80000
+&nbsp;&nbsp;&nbsp;&nbsp;this is running on local host port 80000
 
 	$ python candidate_server.py
 
