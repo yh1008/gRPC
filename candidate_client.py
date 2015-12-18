@@ -1,7 +1,7 @@
 from grpc.beta import implementations
 
 import debate_pb2
-_TIMEOUT_SECONDS = 10
+global _TIMEOUT_SECONDS = 10
 
 def run():
         channel = implementations.insecure_channel('localhost', 8080)
