@@ -78,7 +78,7 @@ class Candidate(debate_pb2.BetaCandidateServicer):
                 return debate_pb2.ElaborateReply(answer=answer_string)
 def serve():
         server = debate_pb2.beta_create_Candidate_server(Candidate())
-        server.add_insecure_port('[::]:80000') #bind to any port that is higher than 20000
+        server.add_insecure_port('[::]:8080') #bind to any port that is higher than 20000
         server.start()
         try:
                 while True:
