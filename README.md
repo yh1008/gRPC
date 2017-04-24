@@ -1,4 +1,4 @@
-######this is a gRPC exercise that makes fun of politicians
+###### this is a gRPC exercise that makes fun of politicians
 
 demonstrates how to use grpc to write a server that talks to an external server written in another language
 
@@ -16,14 +16,14 @@ implements Prof.Yair Sovran's design idea to create a candidate_server, which ta
 	$ protoc -I . --python_out=. --grpc_out=. --plugin=protoc-gen-grpc=`which grpc_python_plugin` debate.proto
 
 
-#####how run the server (on localhost):
+##### how run the server (on localhost):
 
 &nbsp;&nbsp;&nbsp;&nbsp;this is running on local host port 80000
 
 	$ python candidate_server.py
 
 
-#####how to run command lint tool:
+##### how to run command lint tool:
 	$ chmod +x moderator.py 
 #
 	$ ./moderator.py elaborate finance 2 3 1
